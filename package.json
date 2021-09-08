@@ -1,0 +1,25 @@
+{
+  "name": "action-slack",
+  "version": "1.0.0",
+  "description": "action-slack ============",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macmade/action-slack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/macmade/action-slack/issues"
+  },
+  "homepage": "https://github.com/macmade/action-slack#readme",
+  "dependencies": {
+    "@actions/core": "^1.5.0",
+    "@actions/github": "^5.0.0",
+    "@slack/webhook": "^6.0.0"
+  }
+}

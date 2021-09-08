@@ -1,0 +1,19 @@
+name:           'slack'
+description:    'GitHub Action to send Slack notifications'
+inputs:
+    channel:
+        description:    'Slack Channel'
+        required:       true
+    status:
+        description:    'Job Status'
+        required:       true
+    title:
+        description:    'Title'
+        required:       true
+    text:
+        description:    'Text'
+        required:       false
+        default:        ''
+runs:
+    using:  'node12'
+    main:   'index.js'
