@@ -4,7 +4,7 @@ action-slack
 [![Issues](http://img.shields.io/github/issues/macmade/action-slack.svg?logo=github)](https://github.com/macmade/action-slack/issues)
 ![Status](https://img.shields.io/badge/status-active-brightgreen.svg?logo=git)
 ![License](https://img.shields.io/badge/license-mit-brightgreen.svg?logo=open-source-initiative)
-[![Contact](https://img.shields.io/badge/contact-@macmade-blue.svg?logo=twitter)](https://twitter.com/macmade)  
+[![Contact](https://img.shields.io/badge/contact-@macmade-blue.svg?logo=twitter)](https://twitter.com/macmade)
 [![Donate-Paypal](https://img.shields.io/badge/donate-paypal-yellow.svg?logo=github-sponsors&style=social)](https://paypal.me/xslabs)
 
 ### About
