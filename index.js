@@ -133,7 +133,7 @@ try
         attachments:
         [
             {
-                fallback:       'Fallback Text',
+                fallback:       'Job ${env.job}#${env.runNumber}: ${statusText} on ${env.os}',
                 ts:             now.toString(),
                 color:          GetStatusColor( status ),
                 author_name:    sender.name,
