@@ -13,6 +13,8 @@ action-slack
 
 GitHub Action to send Slack notifications.
 
+![Notifications](screenshot.png "Notifications")
+
 **Usage**:
 
     - uses: macmade/actions-slack@v1.0.0
