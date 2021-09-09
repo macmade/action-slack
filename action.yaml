@@ -1,17 +1,21 @@
-name:           'slack'
-description:    'GitHub Action to send Slack notifications'
+name:           Slack Notifications
+description:    GitHub Action to send Slack notifications.
+author:         macmade
+branding:
+    icon:       message-circle
+    color:      red
 inputs:
     channel:
-        description:    'Slack Channel'
+        description:    Slack Channel
         required:       true
     status:
-        description:    'Job Status'
+        description:    Job Status
         required:       true
     title:
-        description:    'Title'
+        description:    Title
         required:       true
     text:
-        description:    'Text'
+        description:    Text
         required:       false
         default:        ''
 runs:
