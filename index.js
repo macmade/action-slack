@@ -128,7 +128,14 @@ async function main()
         const statusText = GetStatusText( status );
         const now        = Math.round( new Date().getTime() / 1000 );
 
-        const webhook = new IncomingWebhook( process.env.SLACK_WEBHOOK_URL );
+        const webhookURL = process.env.SLACK_WEBHOOK_URL;
+
+        if( !webhookURL )
+        {
+            throw new Error( 'SLACK_WEBHOOK_URL is not set' );
+        }
+
+        const webhook = new IncomingWebhook( webhookURL );
         const message =
         {
             channel:    `${channel}`,
