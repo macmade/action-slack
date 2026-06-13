@@ -112,51 +112,56 @@ function GetLinks()
     return links;
 }
 
-try
+async function main()
 {
-    const channel    = core.getInput( 'channel' );
-    const status     = core.getInput( 'status' );
-    const extraTitle = core.getInput( 'title' );
-    const extraText  = core.getInput( 'text' );
-    
-    const env    = GetEnv();
-    const sender = GetSender();
-    const links  = GetLinks();
-    
-    const statusText = GetStatusText( status );
-    const now        = Math.round( new Date().getTime() / 1000 );
-    
-    const webhook = new IncomingWebhook( process.env.SLACK_WEBHOOK_URL );
-    const message =
+    try
     {
-        channel:    `${channel}`,
-        attachments:
-        [
-            {
-                fallback:       `${extraTitle} - Job ${env.job}#${env.runNumber}: ${statusText} on ${env.os}`,
-                ts:             now.toString(),
-                color:          GetStatusColor( status ),
-                author_name:    sender.name,
-                author_link:    sender.link,
-                author_icon:    sender.icon,
-                text:           `Job ${links.job}: ${statusText} on ${env.os}`,
-                footer:         `${links.repository} on ${links.branch} @ ${links.commit}`,
-                footer_icon:    'https://github.githubassets.com/favicon.ico',
-                fields:
-                [
-                    {
-                        title: `${extraTitle}`,
-                        value: `${extraText}`,
-                        short: 'false'
-                    }
-                ]
-            }
-        ]
-    };
-    
-    ( async () => { await webhook.send( message ); } )();
+        const channel    = core.getInput( 'channel' );
+        const status     = core.getInput( 'status' );
+        const extraTitle = core.getInput( 'title' );
+        const extraText  = core.getInput( 'text' );
+
+        const env    = GetEnv();
+        const sender = GetSender();
+        const links  = GetLinks();
+
+        const statusText = GetStatusText( status );
+        const now        = Math.round( new Date().getTime() / 1000 );
+
+        const webhook = new IncomingWebhook( process.env.SLACK_WEBHOOK_URL );
+        const message =
+        {
+            channel:    `${channel}`,
+            attachments:
+            [
+                {
+                    fallback:       `${extraTitle} - Job ${env.job}#${env.runNumber}: ${statusText} on ${env.os}`,
+                    ts:             now.toString(),
+                    color:          GetStatusColor( status ),
+                    author_name:    sender.name,
+                    author_link:    sender.link,
+                    author_icon:    sender.icon,
+                    text:           `Job ${links.job}: ${statusText} on ${env.os}`,
+                    footer:         `${links.repository} on ${links.branch} @ ${links.commit}`,
+                    footer_icon:    'https://github.githubassets.com/favicon.ico',
+                    fields:
+                    [
+                        {
+                            title: `${extraTitle}`,
+                            value: `${extraText}`,
+                            short: 'false'
+                        }
+                    ]
+                }
+            ]
+        };
+
+        await webhook.send( message );
+    }
+    catch( error )
+    {
+        core.setFailed( error.message );
+    }
 }
-catch( error )
-{
-    core.setFailed( error.message );
-}
+
+main();
