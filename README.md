@@ -15,7 +15,7 @@ GitHub Action to send Slack notifications.
 
 **Usage**:
 
-    - uses: macmade/actions-slack@v1.0.0
+    - uses: macmade/action-slack@v1.0.0
 
 **Inputs**:
 
@@ -34,7 +34,7 @@ GitHub Action to send Slack notifications.
 **Environment**:
 
   - **SLACK_WEBHOOK_URL**:  
-    The URL of the Slack incloming webhook.
+    The URL of the Slack incoming webhook.
     
 **Complete example**:
 
