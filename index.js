@@ -156,7 +156,7 @@ async function main()
                         {
                             title: `${extraTitle}`,
                             value: `${extraText}`,
-                            short: 'false'
+                            short: false
                         }
                     ]
                 }
