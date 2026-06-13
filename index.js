@@ -135,32 +135,36 @@ async function main()
             throw new Error( 'SLACK_WEBHOOK_URL is not set' );
         }
 
-        const webhook = new IncomingWebhook( webhookURL );
-        const message =
+        const webhook    = new IncomingWebhook( webhookURL );
+        const attachment =
         {
-            channel:    `${channel}`,
-            attachments:
+            fallback:       `${extraTitle} - Job ${env.job}#${env.runNumber}: ${statusText} on ${env.os}`,
+            ts:             now.toString(),
+            color:          GetStatusColor( status ),
+            author_name:    sender.name,
+            author_link:    sender.link,
+            author_icon:    sender.icon,
+            text:           `Job ${links.job}: ${statusText} on ${env.os}`,
+            footer:         `${links.repository} on ${links.branch} @ ${links.commit}`,
+            footer_icon:    'https://github.githubassets.com/favicon.ico'
+        };
+
+        if( extraTitle || extraText )
+        {
+            attachment.fields =
             [
                 {
-                    fallback:       `${extraTitle} - Job ${env.job}#${env.runNumber}: ${statusText} on ${env.os}`,
-                    ts:             now.toString(),
-                    color:          GetStatusColor( status ),
-                    author_name:    sender.name,
-                    author_link:    sender.link,
-                    author_icon:    sender.icon,
-                    text:           `Job ${links.job}: ${statusText} on ${env.os}`,
-                    footer:         `${links.repository} on ${links.branch} @ ${links.commit}`,
-                    footer_icon:    'https://github.githubassets.com/favicon.ico',
-                    fields:
-                    [
-                        {
-                            title: `${extraTitle}`,
-                            value: `${extraText}`,
-                            short: false
-                        }
-                    ]
+                    title: `${extraTitle}`,
+                    value: `${extraText}`,
+                    short: false
                 }
-            ]
+            ];
+        }
+
+        const message =
+        {
+            channel:        `${channel}`,
+            attachments:    [ attachment ]
         };
 
         await webhook.send( message );
