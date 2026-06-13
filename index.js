@@ -61,7 +61,7 @@ function GetEnv()
         repository:     process.env.GITHUB_REPOSITORY,
         repositoryURL:  `${server}/${repository}`,
         commit:         ( process.env.GITHUB_SHA || '' ).slice( 0, 8 ),
-        branch:         process.env.GITHUB_HEAD_REF || ( process.env.GITHUB_REF || '' ).replace( 'refs/heads/', '' ),
+        branch:         process.env.GITHUB_HEAD_REF || ( process.env.GITHUB_REF || '' ).replace( /^refs\/(heads|tags)\//, '' ),
         actor:          process.env.GITHUB_ACTOR
     };
     
