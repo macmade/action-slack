@@ -1,7 +1,7 @@
 {
   "name": "action-slack",
   "version": "1.0.0",
-  "description": "action-slack ============",
+  "description": "GitHub Action to send Slack notifications.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,8 @@
     "url": "git+https://github.com/macmade/action-slack.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Jean-David Gadina - XS-Labs",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/macmade/action-slack/issues"
   },
