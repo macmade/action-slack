@@ -28,20 +28,26 @@ const { IncomingWebhook }   = require( '@slack/webhook' );
 
 function GetStatusColor( status )
 {
-    if( status.toLowerCase() === 'success'   ) return 'good'
-    if( status.toLowerCase() === 'failure'   ) return 'danger'
-    if( status.toLowerCase() === 'cancelled' ) return 'warning'
-    
-    return 'warning'
+    const colors =
+    {
+        success:    'good',
+        failure:    'danger',
+        cancelled:  'warning'
+    };
+
+    return colors[ status.toLowerCase() ] || 'warning';
 }
 
 function GetStatusText( status )
 {
-    if( status.toLowerCase() === 'success'   ) return 'Success'
-    if( status.toLowerCase() === 'failure'   ) return 'Failure'
-    if( status.toLowerCase() === 'cancelled' ) return 'Cancelled'
-    
-    return 'Unknown'
+    const texts =
+    {
+        success:    'Success',
+        failure:    'Failure',
+        cancelled:  'Cancelled'
+    };
+
+    return texts[ status.toLowerCase() ] || 'Unknown';
 }
 
 function GetEnv()
@@ -70,7 +76,7 @@ function GetEnv()
 
 function GetSender()
 {
-    var sender = 
+    const sender =
     {
         name: process.env.GITHUB_ACTOR,
         link: `https://github.com/${process.env.GITHUB_ACTOR}`,
