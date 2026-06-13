@@ -60,8 +60,8 @@ function GetEnv()
         runNumber:      process.env.GITHUB_RUN_NUMBER,
         repository:     process.env.GITHUB_REPOSITORY,
         repositoryURL:  `${server}/${repository}`,
-        commit:         process.env.GITHUB_SHA.slice( 0, 8 ),
-        branch:         process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF.replace( 'refs/heads/', '' ),
+        commit:         ( process.env.GITHUB_SHA || '' ).slice( 0, 8 ),
+        branch:         process.env.GITHUB_HEAD_REF || ( process.env.GITHUB_REF || '' ).replace( 'refs/heads/', '' ),
         actor:          process.env.GITHUB_ACTOR
     };
     
